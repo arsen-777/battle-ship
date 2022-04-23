@@ -45,11 +45,11 @@ body {
 	/* background-color: white; */
 }
 
-.red {
+/* .red {
 	background-image: url("./acets/mimo.png");
 	background-size: contain;
 	background-color: white;
-}
+} */
 .numbers {
 	width: 100%;
 	position: absolute;
@@ -126,9 +126,9 @@ body {
 	justify-content: space-around;
 }
 
-.mycursor {
+/* .mycursor {
 	cursor: url("./acets/cursor.png");
-}
+} */
 
 .cursor {
 	height: 40px;
