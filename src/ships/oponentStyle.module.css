@@ -1,0 +1,46 @@
+.one {
+	display: flex;
+}
+.two {
+	display: flex;
+}
+.tree {
+	display: flex;
+}
+.four {
+	display: flex;
+}
+.one > div {
+	width: 50px;
+}
+.one > div > img {
+	width: 100%;
+	height: 20px;
+}
+.two > div {
+	width: 100px;
+}
+.two > div > img {
+	width: 100%;
+	height: auto;
+}
+.tree > div {
+	width: 150px;
+}
+.tree > div > img {
+	width: 100%;
+}
+.four > div > img {
+	width: 100%;
+	height: auto;
+}
+.four > div {
+	width: 200px;
+}
+
+.treeblock {
+	display: flex;
+}
+.treevert > img {
+	transform: rotate(-90deg);
+}
