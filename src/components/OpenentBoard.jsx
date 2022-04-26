@@ -12,9 +12,16 @@ export default function OpenentBoard({
 }) {
 	const [navsStyle, setNavsStyle] = useState("");
 	const [pust, setPust] = useState(null);
+	const [style, setStyle] = useState("");
 
 	const fireShip = (id) => {
-		dispatch({ type: ACTION_TYPES.ADD_SQUARE, id, value: value, el: el });
+		dispatch({
+			type: ACTION_TYPES.ADD_SQUARE,
+			id,
+			value: value,
+			el: el,
+			state: state,
+		});
 		dispatch({ type: ACTION_TYPES.PUST_NAV, id });
 	};
 

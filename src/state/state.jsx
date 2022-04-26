@@ -1,10 +1,10 @@
 let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
 export const initialState = {
 	xaxacox1: {
-		myBoard: num.map((el, i) => {
-			return letters.map((item, j) => {
+		myBoard: letters.map((el, i) => {
+			return num.map((item, j) => {
 				return {
 					i: i,
 					j: j,
@@ -26,8 +26,8 @@ export const initialState = {
 
 export const initialStateTwo = {
 	xaxacox2: {
-		hakarBoard: num.map((el, i) => {
-			return letters.map((item, j) => {
+		hakarBoard: letters.map((el, i) => {
+			return num.map((item, j) => {
 				return {
 					i: i,
 					j: j,

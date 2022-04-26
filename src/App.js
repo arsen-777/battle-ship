@@ -74,25 +74,22 @@ function reducer(state, action) {
 					}
 				});
 			});
-			let finalKey;
-			let resNew;
 
-			for (let key in state.xaxacox1.shipsInfo) {
-				// eslint-disable-next-line no-loop-func
-				state.xaxacox1.shipsInfo[key].map((item) => {
-					resNew = item.filter((el) => {
-						finalKey = key;
-						return el.id !== action.id;
-					});
-				});
-			}
+			let key = action.el.shipLength;
+
+			// const result = state.xaxacox1.shipsInfo[key].map((item) => {
+			// 	return item.filter((el) => el.id !== action.id);
+			// });
 
 			return {
 				...state,
 				xaxacox1: {
 					...state.xaxacox1,
 					myBoard: res,
-					shipsInfo: { ...state.xaxacox1.shipsInfo, [finalKey]: [resNew] },
+					// shipsInfo: {
+					// 	...state.xaxacox1.shipsInfo,
+					// 	[action.el.shipLength]: result,
+					// },
 				},
 			};
 
@@ -108,8 +105,7 @@ function reducer(state, action) {
 			// 			return el;
 			// 		}
 			// 	});
-			// 	console.log(action.value, "action value");
-			// 	console.log(res);
+			//
 			// 	return {
 			// 		...state,
 			// 		xaxacox1: {
@@ -122,8 +118,6 @@ function reducer(state, action) {
 
 		case ACTION_TYPES.NAV_LOC_HORIZON: {
 			// eslint-disable-next-line no-lone-blocks
-
-			// console.log(action, "start");
 
 			if (
 				checkCanDrow(
@@ -144,6 +138,8 @@ function reducer(state, action) {
 							return {
 								...el,
 								zbaxecrac: true,
+								canDrow: false,
+								shipLength: action.value,
 							};
 						} else if (isNotAllowed(el, action)) {
 							return {
@@ -155,14 +151,16 @@ function reducer(state, action) {
 						}
 					});
 				});
+
 				const [, ...rest] = state.xaxacox1.ships[action.value];
-				// console.log(action);
+
 				if (state.xaxacox1.shipsInfo[action.value]) {
 					let arr = state.xaxacox1.myBoard[action.row]
-						.slice(action.row, action.row + action.value)
+						.slice(action.col, action.col + action.value)
 						.map((el) => {
 							return { ...el, zbaxecrac: true };
 						});
+
 					return {
 						...state,
 						xaxacox1: {
@@ -233,7 +231,6 @@ function reducer(state, action) {
 				let myCustomValue = [];
 				let customI = action.el.i;
 				for (let k = 0; k < action.value; k++) {
-					// console.log("first");
 					myCustomValue = [
 						...myCustomValue,
 						{
@@ -366,7 +363,7 @@ function reducerTwo(state, action) {
 							el.j < action.col + action.value &&
 							el.i === action.row
 						) {
-							return { ...el, zbaxecrac: true };
+							return { ...el, zbaxecrac: true, canDrow: false };
 						} else if (isNotAllowed(el, action)) {
 							return {
 								...el,
@@ -452,12 +449,17 @@ function reducerTwo(state, action) {
 
 function isNotAllowed({ i, j }, { value, col, row }) {
 	return (
-		(i === row - 1 && j === col - 1) ||
-		(i === row + 1 && j === col - 1) ||
-		(i === row + 1 && j === col + value) ||
-		(i === row - 1 && j === col + value) ||
-		(i === row && (j === col - 1 || j === col + value)) ||
-		(j === col && (i === row - 1 || i === row + 1))
+		// (i === row - 1 && j === col - 1) ||
+		// (i === row + 1 && j === col - 1) ||
+		// (i === row + 1 && j <= col + value) ||
+		// (i === row - 1 && j <= col + value) ||
+		// (i === row && (j === col - 1 || j <= col + value)) ||
+		// (j === col && (i === row - 1 || i === row + 1))
+		// );
+
+		(i === row - 1 && j >= col - 1 && j <= col + value) ||
+		(i === row + 1 && j >= col - 1 && j <= col + value) ||
+		(i === row && (j === col - 1 || j === col + value))
 	);
 }
 function isNotAllowedVert({ i, j }, { value, col, row }) {
